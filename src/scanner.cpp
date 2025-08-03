@@ -1,22 +1,35 @@
 #include "scanner.h"
 
-std::string cyon::Scanner::scan_imports(){
+std::vector<std::string> cyon::Scanner::scan_imports(){
     
-    std::string result;
+    std::vector<std::string> result;
     std::string command_temp=base_command +" "+ file_name;
     char buffer[128];
             
 
     FILE* pipe=popen(command_temp.c_str(),"r");
     if(!pipe) {
-        return "error aagya h";
+        std::cout<<"Error while scanning";
+        return {};
     }
 
     while(fgets(buffer,sizeof(buffer),pipe)!=nullptr){
-        result+=buffer;
+        result.push_back(buffer);
     }
 
     pclose(pipe);
     return result;
             
+}
+
+std::string cyon::get_file_path(const std::string &file_name){
+    fs::path currentDir=".";
+
+    for(const auto &entry:fs::recursive_directory_iterator(currentDir)){
+        if(entry.is_regular_file() && entry.path().filename()==file_name){
+            return entry.path();
+        }
+    }
+
+    return "";
 }
