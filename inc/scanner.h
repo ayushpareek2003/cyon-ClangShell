@@ -1,7 +1,11 @@
 #ifndef scanner
 #define scanner
 #include <string>
+#include <vector>
+#include <iostream>
+#include <filesystem>
 
+namespace fs = std::filesystem;
 
 namespace cyon{
     class Scanner{
@@ -14,8 +18,10 @@ namespace cyon{
         Scanner(std::string &file_name,std::string path_to_file):file_name(file_name),path_to_file(path_to_file){
         }
 
-        std::string scan_imports();
+        std::vector<std::string> scan_imports();
     };
+
+    std::string get_file_path(const std::string &file_name);
 }
 
 #endif 
