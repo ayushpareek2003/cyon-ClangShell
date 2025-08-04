@@ -14,7 +14,13 @@ std::vector<std::string> cyon::Scanner::scan_imports(){
     }
 
     while(fgets(buffer,sizeof(buffer),pipe)!=nullptr){
-        result.push_back(buffer);
+        if(buffer.substr(buffer.length()-3)==".cpp"){
+            result.push_back(buffer.substr(0,buffer.length()-3));
+        }
+        else{
+            result.push_back(buffer.substr(0,buffer.length()-2));
+
+        }
     }
 
     pclose(pipe);
@@ -23,7 +29,7 @@ std::vector<std::string> cyon::Scanner::scan_imports(){
 }
 
 std::string cyon::get_file_path(const std::string &file_name){
-    fs::path currentDir=".";
+    fs::path currentDir="."; //we will make it from top level dir
 
     for(const auto &entry:fs::recursive_directory_iterator(currentDir)){
         if(entry.is_regular_file() && entry.path().filename()==file_name){

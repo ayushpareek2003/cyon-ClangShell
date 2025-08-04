@@ -57,10 +57,9 @@ void cyon::scan_deps::run_service(){
             fill_paths(_new_dep);
             _pending.push(_new_dep);
             in_process.insert(_new_dep); 
+            dependencies[_file_name].push_back(_new_dep);
         }
         is_processed.insert(_file_name);
         in_process.erase(_file_name);
-
-        
     }
 }
