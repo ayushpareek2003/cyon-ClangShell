@@ -14,13 +14,11 @@ std::vector<std::string> cyon::Scanner::scan_imports(){
     }
 
     while(fgets(buffer,sizeof(buffer),pipe)!=nullptr){
-        if(buffer.substr(buffer.length()-3)==".cpp"){
-            result.push_back(buffer.substr(0,buffer.length()-3));
-        }
-        else{
-            result.push_back(buffer.substr(0,buffer.length()-2));
-
-        }
+        // if(buffer.substr(buffer.length()-3)==".cpp"){
+        //     result.push_back(buffer.substr(0,buffer.length()-3));
+        // }
+        // else{
+        result.push_back(buffer);
     }
 
     pclose(pipe);

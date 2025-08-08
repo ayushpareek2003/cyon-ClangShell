@@ -1,9 +1,12 @@
 
-#ifndef service.h
-#define service.h
+#ifndef service
+#define service
 #include <string>
 #include <filesystem>
 #include <iostream>
+#include <queue>         
+#include <unordered_map> 
+#include <set>
 
 namespace cyon{
 class scan_deps{
@@ -11,8 +14,7 @@ class scan_deps{
     std::string file_name;
     std::string path_to_main_file;
     std::string current_path;
-    std::string compiled_dir="./temp_object_files";
-    
+    std::string compiled_dir="temp";
     std::queue<std::string> _pending;
 
     // ToDo: better will be changing dependencies DS to tree like structure 
@@ -22,13 +24,13 @@ class scan_deps{
 
     std::set<std::string> in_process;
     std::set<std::string> is_processed;
-    std::set<std::string> is_compiled;
+    
     public:
-        scan_deps(std::string &file_name,std::string &path_to_main_file):main_file(file_name),
+        scan_deps(std::string &file_name,std::string &path_to_main_file):file_name(file_name),
         path_to_main_file(path_to_main_file){
             _pending.push(file_name);
             in_process.insert(file_name);
-            path_to_file.insert(std::make_pair(file_name,path_to_main_file));
+            path_to_header.insert(std::make_pair(file_name,path_to_main_file));
         }
 
         void create_temp_dir();
@@ -36,6 +38,7 @@ class scan_deps{
 
         void run_service();
         void fill_paths(std::string &_filename);
+        void print_paths();
 
 };
 }
