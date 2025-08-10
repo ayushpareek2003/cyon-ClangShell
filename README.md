@@ -37,20 +37,15 @@ cmake --build .
 ```
 Using Make
 ```bash
-Copy
-Edit
 make
-Usage
+```
+### Usage
 From the build directory or after installing the executable:
-```
 ```bash
-Copy
-Edit
 ./mycompiler <file-name> [directory]
-Examples
 ```
+#### Examples
 ```bash
-
 # Compile file in the current directory
 ./mycompiler main.cpp
 
