@@ -53,6 +53,7 @@ From the build directory or after installing the executable:
 ./mycompiler main.cpp /home/user/project/src
 ```
 Future Plans
+
 Support for additional compilers (GCC, MSVC, etc.).
 
 Extended build configuration options.
