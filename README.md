@@ -13,19 +13,18 @@ The tool is designed for flexibility and automation in small to medium-sized C++
 - Handles basic compilation workflows without external build dependencies.
 
 ## Project Structure
+```bash
 inc/ # Header files
 src/ # Implementation files
 mycompiler.cpp # Main entry for CLI tool
+```
 
-markdown
-Copy
-Edit
 
 ## Requirements
 - Clang (`clang++`)
 - C++20 or newer
 - CMake (optional, for build system generation)
-- Make or Ninja (optional, for building)
+- Make (optional, for building)
 
 ## Building
 
@@ -35,27 +34,29 @@ mkdir build
 cd build
 cmake ..
 cmake --build .
+```
 Using Make
-bash
+```bash
 Copy
 Edit
 make
 Usage
 From the build directory or after installing the executable:
-
-bash
+```
+```bash
 Copy
 Edit
 ./mycompiler <file-name> [directory]
 Examples
-bash
-Copy
-Edit
+```
+```bash
+
 # Compile file in the current directory
 ./mycompiler main.cpp
 
 # Compile file from a specified directory
 ./mycompiler main.cpp /home/user/project/src
+```
 Future Plans
 Support for additional compilers (GCC, MSVC, etc.).
 
