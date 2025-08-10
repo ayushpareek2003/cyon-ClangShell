@@ -1,9 +1,9 @@
-#cyon-shell
+# cyon-shell
 
-Overview
+## Overview
 cyon-shell is a custom C++ build and compilation utility. It provides a command-line interface to compile and link C++ source files, with support for specifying file names and optional directories. The tool is designed for flexibility and automation in small to medium-sized C++ projects.
 
-Features
+## Features
 Compile C++ source files using Clang (more compiler support planned).
 
 Accepts file name and optional directory path as arguments.
@@ -12,7 +12,7 @@ Uses the provided directory or defaults to the current working directory.
 
 Handles basic compilation workflows without external build dependencies.
 
-Project Structure
+#### Project Structure
 bash
 Copy
 Edit
