@@ -7,6 +7,8 @@
 #include <queue>         
 #include <unordered_map> 
 #include <set>
+#include "scanner.h"
+#include "utlis.h"
 
 namespace cyon{
 class scan_deps{
@@ -29,7 +31,7 @@ class scan_deps{
         scan_deps(std::string &file_name,std::string &path_to_main_file):file_name(file_name),
         path_to_main_file(path_to_main_file){
             _pending.push(file_name);
-            in_process.insert(file_name);
+            // in_process.insert(file_name);
             path_to_header.insert(std::make_pair(file_name,path_to_main_file));
         }
 
@@ -37,7 +39,7 @@ class scan_deps{
         void clear_temp_dir();
 
         void run_service();
-        void fill_paths(std::string &_filename);
+        void fill_paths(std::string _filename);
         void print_paths();
 
 };

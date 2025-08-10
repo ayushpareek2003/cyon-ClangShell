@@ -1,6 +1,5 @@
 #include <iostream>
 #include "scanner.h"
-#include "utlis.h"
 #include <string>
 #include "compiler.h"
 #include "service.h"
@@ -11,18 +10,22 @@
 int main(){
     std::string name="ser_testing.cpp";
     std::string path="./";
-
+    std::string inc="compiler.h";
+    std::string path2="./inc/compiler.h";
     std::unordered_map<std::string,std::vector<std::string>> dependencies;
     std::unordered_map<std::string,std::string> path_to_header;
     std::unordered_map<std::string,std::string> path_to_source;
 
     // Scanning Testing
 
-    // cyon::Scanner scan(name,path);
-    // std::vector<std::string> tra=scan.scan_imports();
-    // for(auto j:tra){
-    //     std::cout<<j;
-    // }
+    cyon::Scanner scan(inc,path2);
+    std::vector<std::string> tra=scan.scan_imports();
+    for(auto j:tra){
+        std::cout<<j;
+    }
+    std::cout<<"donme"<<std::endl;
+
+    std::cout<<"intial test  "<<cyon::get_file_path(inc)<<std::endl;
 
 
     ////Compiler Testing
@@ -38,9 +41,10 @@ int main(){
     //service testing
 
     cyon::scan_deps sdep(name,path);
+    std::cout<<"hi"<<std::endl;
     sdep.run_service();
+    std::cout<<"hi";
     sdep.print_paths();
-
 
 
     return 0;

@@ -3,7 +3,7 @@
 std::vector<std::string> cyon::Scanner::scan_imports(){
     
     std::vector<std::string> result;
-    std::string command_temp=base_command +" "+ file_name;
+    std::string command_temp="cd "+ file_dir+ " && " +base_command +" "+file_name;
     char buffer[128];
             
 
@@ -26,14 +26,13 @@ std::vector<std::string> cyon::Scanner::scan_imports(){
             
 }
 
-std::string cyon::get_file_path(const std::string &file_name){
+std::string cyon::get_file_path(std::string &file_name){
     fs::path currentDir="."; //we will make it from top level dir
-
+    file_name.erase(file_name.find_last_not_of(" \n\r\t") + 1);
     for(const auto &entry:fs::recursive_directory_iterator(currentDir)){
         if(entry.is_regular_file() && entry.path().filename()==file_name){
             return entry.path();
         }
     }
-
     return "";
 }
